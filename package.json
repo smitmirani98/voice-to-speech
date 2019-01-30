@@ -1,0 +1,22 @@
+{
+  "name": "voice-to-speech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "file-system": "^2.2.2",
+    "fs": "0.0.1-security",
+    "hbs": "^4.0.1",
+    "keyword-extractor": "0.0.15",
+    "mongodb": "^2.2.5",
+    "nodemon": "^1.18.9",
+    "speech-to-text": "^2.9.1"
+  }
+}

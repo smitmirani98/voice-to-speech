@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{pageTitle}}</title>
+</head>
+<body onload="myFunction()" bgcolor="yellow">
+
+  <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+<script>
+
+var text = document.querySelector('demo');
+var SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+  var finalTranscript = '';
+  var recognition = new SpeechRecognition();
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 10;
+  recognition.continuous = false;
+
+
+
+  function myFunction() {
+    recognition.start();
+  }
+
+  recognition.onresult = (event) => {
+    let interimTranscript = '';
+    for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
+      let transcript = event.results[i][0].transcript;
+      if (event.results[i].isFinal) {
+        finalTranscript += transcript;
+      } else {
+        interimTranscript += transcript;
+      }
+    }
+
+
+    document.getElementById('demo').innerHTML = finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</>';
+    text=finalTranscript;
+
+    if(text.includes('mark')&&text.includes('semester')&&text.includes('5')){
+     document.getElementById("demo1").innerHTML = "haha";
+    }
+    if(text.includes('hello')){
+      document.getElementById("demo1").innerHTML = "hoho";
+    }
+  }
+  recognition.onspeechend = function() {
+      recognition.stop();
+
+
+  };
+
+</script>
+</body>
+</html>
